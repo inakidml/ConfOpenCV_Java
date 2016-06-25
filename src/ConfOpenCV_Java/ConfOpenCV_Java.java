@@ -31,26 +31,22 @@ public class ConfOpenCV_Java {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
 
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-
         System.out.println("Welcome to OpenCV " + Core.VERSION);
-
         String outputFile = "mivideo.avi";
         VideoCapture vc = new VideoCapture(0);
-        vc.set(Videoio.CAP_PROP_FPS, 10);
-        System.out.println(vc.set(Videoio.CV_CAP_PROP_FRAME_WIDTH, 1600));//no lo cambia
-        System.out.println(Videoio.CV_CAP_PROP_FRAME_WIDTH);
-        vc.set(Videoio.CV_CAP_PROP_FRAME_WIDTH, 1200);
-        
-        double fps = vc.get(Videoio.CAP_PROP_FPS);
+        System.out.println("fps= " + Videoio.CAP_PROP_FPS);
+        //vc.set(5, 50);
+        System.out.println(vc.set(3, 1280));
+        vc.set(4, 720.0);
+        double fps = vc.get(5);
         System.out.println(fps);
 
         Size frameSize = new Size((int) vc.get(Videoio.CV_CAP_PROP_FRAME_WIDTH), (int) vc.get(Videoio.CV_CAP_PROP_FRAME_HEIGHT));
         System.out.println(frameSize);
 
-        VideoWriter vw = new VideoWriter(outputFile, VideoWriter.fourcc('X', '2', '6', '4'), fps, frameSize, true);
+        VideoWriter vw = new VideoWriter(outputFile, VideoWriter.fourcc('I', '4', '2', '0'), fps, frameSize, true);
         //System.out.println(VideoWriter.fourcc('X', '2', '6', '4'));
         //System.out.println(vw.isOpened());
         Mat frame = new Mat();
@@ -58,7 +54,7 @@ public class ConfOpenCV_Java {
         //para cargar fotos
         //Imgcodecs.imread(outputFile)
         //Imgcodecs.imwrite(outputFile, m);
-        int numFramesRemaining = 10 * (int) fps;
+        int numFramesRemaining = 5 * (int) fps;
 
         NewJFrame ventana = new NewJFrame();
         ventana.setVisible(true);
@@ -75,7 +71,7 @@ public class ConfOpenCV_Java {
         }
         vw.release();
         vc.release();
-        frame.release();
+        ventana.dispose();
 
     }
 
