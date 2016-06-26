@@ -19,6 +19,11 @@ import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.VideoWriter;
 import org.opencv.videoio.Videoio;
 
+
+
+
+
+
 /**
  *
  * @author inaki
@@ -37,16 +42,17 @@ public class ConfOpenCV_Java {
         String outputFile = "mivideo.avi";
         VideoCapture vc = new VideoCapture(0);
         System.out.println("fps= " + Videoio.CAP_PROP_FPS);
-        //vc.set(5, 50);
+        
+        vc.set(5, 50);
         System.out.println(vc.set(3, 1280));
-        vc.set(4, 720.0);
-        double fps = vc.get(5);
+        vc.set(4, 720);
+        double fps = 7;
         System.out.println(fps);
 
         Size frameSize = new Size((int) vc.get(Videoio.CV_CAP_PROP_FRAME_WIDTH), (int) vc.get(Videoio.CV_CAP_PROP_FRAME_HEIGHT));
         System.out.println(frameSize);
 
-        VideoWriter vw = new VideoWriter(outputFile, VideoWriter.fourcc('I', '4', '2', '0'), fps, frameSize, true);
+        VideoWriter vw = new VideoWriter(outputFile, VideoWriter.fourcc('X', '2', '6', '4'), fps, frameSize, true);
         //System.out.println(VideoWriter.fourcc('X', '2', '6', '4'));
         //System.out.println(vw.isOpened());
         Mat frame = new Mat();
@@ -79,6 +85,7 @@ public class ConfOpenCV_Java {
         //Imgproc.resize(img, img, new Size(640, 480));
         MatOfByte matOfByte = new MatOfByte();
         Imgcodecs.imencode(".png", img, matOfByte);
+        
 
         byte[] byteArray = matOfByte.toArray();
         BufferedImage bufImage = null;
