@@ -38,10 +38,10 @@ public class ConfOpenCV_Java {
         VideoCapture vc = new VideoCapture(0);
         System.out.println("fps= " + Videoio.CAP_PROP_FPS);
 
-        vc.set(5, 50);
-        System.out.println(vc.set(3, 1280));
-        vc.set(4, 720);
-        double fps = 7;
+        //vc.set(5, 50);
+        //System.out.println(vc.set(3, 1280));
+        //vc.set(4, 720);
+        double fps = 30;
         System.out.println(fps);
 
         Size frameSize = new Size((int) vc.get(Videoio.CV_CAP_PROP_FRAME_WIDTH), (int) vc.get(Videoio.CV_CAP_PROP_FRAME_HEIGHT));
